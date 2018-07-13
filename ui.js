@@ -75,7 +75,8 @@
 			var btnDeactivateWhatsApp = document.getElementById('btnCloseWhatsAllApp');
 			btnDeactivateWhatsApp.addEventListener("click", function( e ) {
 				var divContainer = document.getElementById('statusIndexer');
-				divContainer.outerHTML = '';
+				//divContainer.outerHTML = '';
+				divContainer.classList.add('hide');
 				var startBtnDiv = document.getElementById('btnOpenWhatsAllApp');
 				startBtnDiv.classList.remove('hide');
 				
@@ -156,9 +157,14 @@
 			startBtnDiv.innerHTML = '<div class="titleText">Whats<br/>All<br/>App</div>';
 			startBtnDiv.id = 'btnOpenWhatsAllApp';
 			startBtnDiv.addEventListener("click", function( e ) {
-				createDOM();
-				setupContainerEventListeners();
-				this.classList.add('hide');
+				var divContainer = document.getElementById("statusIndexer");
+				    if(divContainer){
+						divContainer.classList.remove('hide');
+				    } else {
+						createDOM();
+						setupContainerEventListeners();
+						this.classList.add('hide');
+				    }
 			});
 			
 			var style = "";
@@ -166,6 +172,7 @@
 			style += "position: fixed; top: 15px; left: 15px; z-index: 99999; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.06), 0 2px 5px 0 rgba(0,0,0,0.2);}";
 			style += "#btnOpenWhatsAllApp:hover { box-shadow: none; top:16px; cursor: pointer; }";
 			style += "#btnOpenWhatsAllApp.hide { display: none; }";
+			style += ".hide { display: none; }";
 			style += "#btnOpenWhatsAllApp .titleText {text-align: center; font-size: 13px; padding-top: 14px; color: white; }";
 			var styleEl = document.createElement("style");
 			styleEl.innerHTML = style;
