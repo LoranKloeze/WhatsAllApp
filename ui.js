@@ -159,6 +159,7 @@
 			startBtnDiv.addEventListener("click", function( e ) {
 				var divContainer = document.getElementById("statusIndexer");
 				    if(divContainer){
+						//var divContainer = document.getElementById('statusIndexer');
 						divContainer.classList.remove('hide');
 				    } else {
 						createDOM();
@@ -391,7 +392,16 @@
 					var img = clientBox.getElementsByTagName('img')[0];
 					img.classList.remove('isOnline');
 					if (m.isOnline) {
-						console.log(id + ' is online');
+						var today = new Date();
+						var dd = today.getDate();
+						var mm = today.getMonth()+1;
+						var hh = today.getHours();
+						var min = today.getMinutes();
+						var ss = today.getSeconds();
+						var yyyy = today.getFullYear();
+						var leDay = mm+'/'+dd+'/'+yyyy;
+						var leTime = hh+':'+min+':'+ss;
+						console.log(leDay + ' ' + leTime + ': ' + id + ' is online');
 						clientBox.parentNode.prepend(clientBox);
 						img.classList.remove('isOffline');
 						img.classList.add('isOnline');
