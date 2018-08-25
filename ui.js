@@ -75,7 +75,8 @@
 			var btnDeactivateWhatsApp = document.getElementById('btnCloseWhatsAllApp');
 			btnDeactivateWhatsApp.addEventListener("click", function( e ) {
 				var divContainer = document.getElementById('statusIndexer');
-				divContainer.outerHTML = '';
+				//divContainer.outerHTML = '';
+				divContainer.classList.add('hide');
 				var startBtnDiv = document.getElementById('btnOpenWhatsAllApp');
 				startBtnDiv.classList.remove('hide');
 				
@@ -156,9 +157,15 @@
 			startBtnDiv.innerHTML = '<div class="titleText">Whats<br/>All<br/>App</div>';
 			startBtnDiv.id = 'btnOpenWhatsAllApp';
 			startBtnDiv.addEventListener("click", function( e ) {
-				createDOM();
-				setupContainerEventListeners();
-				this.classList.add('hide');
+				var divContainer = document.getElementById("statusIndexer");
+				    if(divContainer){
+						//var divContainer = document.getElementById('statusIndexer');
+						divContainer.classList.remove('hide');
+				    } else {
+						createDOM();
+						setupContainerEventListeners();
+						this.classList.add('hide');
+				    }
 			});
 			
 			var style = "";
@@ -166,6 +173,7 @@
 			style += "position: fixed; top: 15px; left: 15px; z-index: 99999; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.06), 0 2px 5px 0 rgba(0,0,0,0.2);}";
 			style += "#btnOpenWhatsAllApp:hover { box-shadow: none; top:16px; cursor: pointer; }";
 			style += "#btnOpenWhatsAllApp.hide { display: none; }";
+			style += ".hide { display: none; }";
 			style += "#btnOpenWhatsAllApp .titleText {text-align: center; font-size: 13px; padding-top: 14px; color: white; }";
 			var styleEl = document.createElement("style");
 			styleEl.innerHTML = style;
@@ -384,7 +392,16 @@
 					var img = clientBox.getElementsByTagName('img')[0];
 					img.classList.remove('isOnline');
 					if (m.isOnline) {
-						console.log(id + ' is online');
+						var today = new Date();
+						var dd = today.getDate();
+						var mm = today.getMonth()+1;
+						var hh = today.getHours();
+						var min = today.getMinutes();
+						var ss = today.getSeconds();
+						var yyyy = today.getFullYear();
+						var leDay = mm+'/'+dd+'/'+yyyy;
+						var leTime = hh+':'+min+':'+ss;
+						console.log(leDay + ' ' + leTime + ': ' + id + ' is online');
 						clientBox.parentNode.prepend(clientBox);
 						img.classList.remove('isOffline');
 						img.classList.add('isOnline');
