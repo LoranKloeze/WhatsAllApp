@@ -36,20 +36,11 @@ export const initApi = () => {
                 const str_value = td.decode(value)
                 if (done) {
                     js_src += str_value
-                    const regExDynNameStore1 = /Wap:[a-z]\("(\w+)"\)/
-                    const res1 = regExDynNameStore1.exec(js_src)
-                    const funcName1 = res1[1]
 
-                    const WLAPWAPStore = window.webpackJsonp([], {[funcName1]: (x, y, z) => {
-                    }}, [funcName1])
+                    const WLAPWAPStore = window.webpackJsonp([], null, ["bihdhbjih"]).default
                     Api.WLAPWAPStore = WLAPWAPStore
 
-                    const regExDynNameStore2 = /(\w+):function\(e,t,i\)\{\"use strict\";e\.exports=\{AllStarredMsgs:/
-                    const res2 = regExDynNameStore2.exec(js_src)
-                    const funcName2 = res2[1]
-
-                    const WLAPStore = window.webpackJsonp([], {[funcName2]: (x, y, z) => {
-                    }}, [funcName2])
+                    const WLAPStore = window.webpackJsonp([], null, ["bhggeigghg"]).default
                     Api.WLAPStore = WLAPStore
                     resolve()
 

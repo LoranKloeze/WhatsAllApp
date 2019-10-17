@@ -136,7 +136,7 @@ class MainContent extends Component {
 
                 // 2. Status text
                 const statusFind = () => {
-                    getApi().WLAPWAPStore.default.statusFind(account.phoneNr + '@c.us').then((response) => {
+                    getApi().WLAPWAPStore.statusFind(account.phoneNr + '@c.us').then((response) => {
                         const hydratedAccounts = this.state.accounts
                         const index = hydratedAccounts.findIndex((stateAcc) => stateAcc.phoneNr === account.phoneNr)
                         hydratedAccounts[index].statusTxt = response.status
@@ -181,7 +181,7 @@ class MainContent extends Component {
     subscribeToPresence() {
         L(`Subscribing to WAPP presence`)
         this.state.accounts.forEach((account) => {
-            getApi().WLAPWAPStore.default.subscribePresence( account.phoneNr + '@c.us')
+            getApi().WLAPWAPStore.subscribePresence( account.phoneNr + '@c.us')
         })
     }
 
