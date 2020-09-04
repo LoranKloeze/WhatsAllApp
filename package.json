@@ -5,7 +5,7 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^1.5.1",
     "copy-webpack-plugin": "^4.5.2",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.13.1",
     "raw-loader": "^0.5.1",
     "react-svg-inline": "^2.1.1",
     "sass-loader": "^7.1.0",
